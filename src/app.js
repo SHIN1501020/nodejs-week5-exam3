@@ -1,6 +1,5 @@
 import express from "express";
-import routes from "./routes/index.js";
-import cookieParser from "cookie-parser";
+import routes from "./routes/posts.router.js";
 import { config } from "dotenv";
 
 config();
@@ -20,8 +19,7 @@ router.get("/", (req, res) => {
   return res.json({ message: "Hi!" });
 });
 
-app.use("/api", [router, routes]);
-app.use(errorHandler);
+app.use("/", [router, routes]);
 app.listen(PORT, () => {
   console.log(`Server listen ${PORT}`);
 });
